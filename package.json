@@ -1,0 +1,19 @@
+{
+  "name": "jd.boivin.unity.extensions",
+  "version": "1.0.0",
+  "displayName": "Extensions",
+  "description": "",
+  "unity": "2019.3",
+  "unityRelease": "5f1",
+  "dependencies": {
+    
+ },
+ "keywords": [
+    "tween"
+  ],
+  "author": {
+    "name": "Jean-Denis Boivin",
+    "email": "jd@boiv.in",
+    "url": "https://jd.boiv.in"
+  }
+}
