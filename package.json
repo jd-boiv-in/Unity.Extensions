@@ -4,9 +4,9 @@
   "displayName": "Extensions",
   "description": "Extensions helper methods for Unity that I use frequently",
   "dependencies": {
-    
- },
- "keywords": [
+  
+  },
+  "keywords": [
     "extensions"
   ],
   "author": {
