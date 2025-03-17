@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace JD.Extensions
 {
@@ -84,6 +85,17 @@ namespace JD.Extensions
         public static Vector3 ToV3(this float value)
         {
             return new Vector3(value, value, value);
+        }
+        
+        public static float Angle(this Vector2 to)
+        {
+            // Atan2
+            return Mathf.Atan2(to.y, to.x);
+            
+            // Unity's (not working for all quadrant but might be faster?)
+            //var from = Vector2.right;
+            //var num = (float) Math.Sqrt((double) from.sqrMagnitude * (double) to.sqrMagnitude);
+            //return (double) num < 1.0000000036274937E-15 ? 0.0f : (float) Math.Acos((double) Mathf.Clamp(Vector2.Dot(from, to) / num, -1f, 1f)) * 57.29578f;
         }
     }
 }
