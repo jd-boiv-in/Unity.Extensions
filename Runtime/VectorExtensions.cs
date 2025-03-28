@@ -108,5 +108,10 @@ namespace JD.Extensions
             //var num = (float) Math.Sqrt((double) from.sqrMagnitude * (double) to.sqrMagnitude);
             //return (double) num < 1.0000000036274937E-15 ? 0.0f : (float) Math.Acos((double) Mathf.Clamp(Vector2.Dot(from, to) / num, -1f, 1f)) * 57.29578f;
         }
+        
+        public static float Angle(this Vector3 to)
+        {
+            return Mathf.Atan2(to.y, to.x);
+        }
     }
 }
