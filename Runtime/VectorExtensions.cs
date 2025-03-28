@@ -5,6 +5,17 @@ namespace JD.Extensions
 {
     public static class VectorExtensions
     {
+        public static float Random(this Vector2 vector)
+        {
+            return UnityEngine.Random.Range(vector.x, vector.y); // Inclusive already
+        }
+        
+        public static int Random(this Vector2Int vector)
+        {
+            if (vector.x == vector.y) return vector.x;
+            return UnityEngine.Random.Range(vector.x, vector.y + 1); // Inclusive
+        }
+        
         public static Vector3 SetX(this Vector3 vector, float x)
         {
             vector.x = x;
