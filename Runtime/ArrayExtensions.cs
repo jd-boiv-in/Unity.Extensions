@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using UnityEngine;
 
 namespace JD.Extensions
 {
@@ -14,6 +15,19 @@ namespace JD.Extensions
         {
             if (list.Count == 0) return default;
             return list[UnityEngine.Random.Range(0, list.Count)];
+        }
+        
+        public static T[,] Clone<T>(this T[,] array)
+        {
+            if (array == null) return null;
+            
+            var size = new Vector2Int(array.GetLength(0), array.GetLength(1));
+            var clone = new T[size.x, size.y];
+            for (var x = 0; x < size.x; x++)
+            for (var y = 0; y < size.y; y++)
+                clone[x, y] = array[x, y];
+            
+            return clone;
         }
     }
 }
