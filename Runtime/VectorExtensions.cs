@@ -16,6 +16,54 @@ namespace JD.Extensions
             return UnityEngine.Random.Range(vector.x, vector.y + 1); // Inclusive
         }
         
+        public static Vector2 Rotate(this Vector2 point, float angle, Vector2 pivot = default)
+        {
+            var translated = point - pivot;
+
+            var cosAngle = Mathf.Cos(angle);
+            var sinAngle = Mathf.Sin(angle);
+            var rotated = new Vector2(
+                translated.x * cosAngle - translated.y * sinAngle,
+                translated.x * sinAngle + translated.y * cosAngle
+            );
+
+            return rotated + pivot;
+        }
+        
+        public static Vector2Int Rotate(this Vector2Int point, int degrees, Vector2Int pivot = default)
+        {
+            degrees = ((degrees % 360) + 360) % 360;
+            return degrees switch
+            {
+                0 => point,
+                90 => Rotate90(point, pivot),
+                180 => Rotate180(point, pivot),
+                270 => Rotate270(point, pivot),
+                _ => point
+            };
+        }
+
+        public static Vector2Int Rotate90(this Vector2Int point, Vector2Int pivot = default)
+        {
+            var x = pivot.x - (point.y - pivot.y);
+            var y = pivot.y + (point.x - pivot.x);
+            return new Vector2Int(x, y);
+        }
+
+        public static Vector2Int Rotate180(this Vector2Int point, Vector2Int pivot = default)
+        {
+            var x = pivot.x - (point.x - pivot.x);
+            var y = pivot.y - (point.y - pivot.y);
+            return new Vector2Int(x, y);
+        }
+
+        public static Vector2Int Rotate270(this Vector2Int point, Vector2Int pivot = default)
+        {
+            var x = pivot.x + (point.y - pivot.y);
+            var y = pivot.y - (point.x - pivot.x);
+            return new Vector2Int(x, y);
+        }
+        
         public static Vector3 SetX(this Vector3 vector, float x)
         {
             vector.x = x;
