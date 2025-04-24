@@ -5,6 +5,19 @@ namespace JD.Extensions
 {
     public static class NumberExtensions
     {
+        /// Find the next nearest Power of Two
+        public static int NextPowerOfTwo(this int x)
+        {
+            if (x < 0) { return 0; }
+            --x;
+            x |= x >> 1;
+            x |= x >> 2;
+            x |= x >> 4;
+            x |= x >> 8;
+            x |= x >> 16;
+            return x + 1;
+        }
+        
         /// Clamp value between min / max
         public static float Clamp(this float value, float min = 0f, float max = 1f)
         {
