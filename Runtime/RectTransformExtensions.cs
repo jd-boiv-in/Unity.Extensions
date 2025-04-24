@@ -4,6 +4,16 @@ namespace JD.Extensions
 {
     public static class RectTransformExtensions
     {
+        public static void SetPivot(this RectTransform rt, Vector2 pivot)
+        {
+            var size = rt.sizeDelta;
+            var deltaPivot = rt.pivot - pivot;
+            var deltaPosition = new Vector3(deltaPivot.x * size.x, deltaPivot.y * size.y);
+            
+            rt.pivot = pivot;
+            rt.localPosition -= deltaPosition;
+        }
+        
         public static Rect GetWorldRect(this RectTransform rt)
         {
             return GetWorldRect(rt, new Vector2(1, 1));

@@ -1,9 +1,16 @@
 ﻿using System.Collections.Generic;
+using UnityEngine;
 
 namespace JD.Extensions
 {
     public static class NumberExtensions
     {
+        /// Clamp value between min / max
+        public static float Clamp(this float value, float min = 0f, float max = 1f)
+        {
+            return Mathf.Min(max, Mathf.Max(min, value));
+        }
+        
         /// Inclusive random
         public static float Random(this float value)
         {
