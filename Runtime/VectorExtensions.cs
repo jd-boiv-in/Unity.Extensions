@@ -146,6 +146,16 @@ namespace JD.Extensions
             return new Vector3(value, value, value);
         }
         
+        public static Vector2 ToV2(this Vector3 value)
+        {
+            return new Vector2(value.x, value.y);
+        }
+        
+        public static Vector3 ToV3(this Vector2 value)
+        {
+            return new Vector3(value.x, value.y, 0);
+        }
+        
         public static float Angle(this Vector2 to)
         {
             // Atan2
