@@ -24,7 +24,33 @@ namespace JD.Extensions
             return UnityEngine.Random.Range(vector.x, vector.y + 1); // Inclusive
         }
         
-        public static Vector2 Rotate(this Vector2 point, float angle, Vector2 pivot = default)
+        public static float Random(this Vector2 vector, float random)
+        {
+            if (Mathf.Approximately(vector.x, vector.y)) return vector.x;
+            return vector.x + (vector.y - vector.x) * random; // Inclusive
+        }
+        
+        public static int Random(this Vector2Int vector, float random)
+        {
+            if (vector.x == vector.y) return vector.x;
+            return vector.x + Mathf.RoundToInt((vector.y - vector.x) * random);  // Inclusive
+        }
+        
+        public static float Random(this Vector2 vector, int seed)
+        {
+            if (Mathf.Approximately(vector.x, vector.y)) return vector.x;
+            UnityEngine.Random.InitState(seed);
+            return UnityEngine.Random.Range(vector.x, vector.y); // Inclusive already
+        }
+        
+        public static int Random(this Vector2Int vector, int seed)
+        {
+            if (vector.x == vector.y) return vector.x;
+            UnityEngine.Random.InitState(seed);
+            return UnityEngine.Random.Range(vector.x, vector.y + 1); // Inclusive
+        }
+        
+        public static Vector2 RotateAround(this Vector2 point, float angle, Vector2 pivot = default)
         {
             var translated = point - pivot;
 
@@ -38,7 +64,7 @@ namespace JD.Extensions
             return rotated + pivot;
         }
         
-        public static Vector2Int Rotate(this Vector2Int point, int degrees, Vector2Int pivot = default)
+        public static Vector2Int RotateAround(this Vector2Int point, int degrees, Vector2Int pivot = default)
         {
             degrees = ((degrees % 360) + 360) % 360;
             return degrees switch
@@ -178,6 +204,15 @@ namespace JD.Extensions
         public static float Angle(this Vector3 to)
         {
             return Mathf.Atan2(to.y, to.x);
+        }
+        
+        public static float Angle(this Vector3 a, Vector3 b)
+        {
+            var diff = b - a;
+            return Mathf.Atan2(diff.y, diff.x) * Mathf.Rad2Deg + 180;
+
+            // I'm missing something here... Unity's method don't work as expected...
+            //return Vector3.Angle(a, b);
         }
     }
 }

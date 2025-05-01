@@ -23,10 +23,10 @@ namespace JD.Extensions
 
             // Get the four corners of the Rect relative to the pivot
             var corners = new Vector2[4];
-            corners[0] = rect.BottomLeft().Rotate(radAngle, pivot);
-            corners[1] = rect.BottomRight().Rotate(radAngle, pivot);
-            corners[2] = rect.TopRight().Rotate(radAngle, pivot);
-            corners[3] = rect.TopLeft().Rotate(radAngle, pivot);
+            corners[0] = rect.BottomLeft().RotateAround(radAngle, pivot);
+            corners[1] = rect.BottomRight().RotateAround(radAngle, pivot);
+            corners[2] = rect.TopRight().RotateAround(radAngle, pivot);
+            corners[3] = rect.TopLeft().RotateAround(radAngle, pivot);
 
             // Find the new bounding box
             var min = corners[0];
