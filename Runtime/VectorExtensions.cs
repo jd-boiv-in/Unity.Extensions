@@ -5,6 +5,14 @@ namespace JD.Extensions
 {
     public static class VectorExtensions
     {
+        public static Vector2 Rotate(this Vector2 value, float angle)
+        {
+            var length = value.magnitude;
+            angle = value.Angle() + angle;
+            
+            return new Vector2(length * Mathf.Cos(angle), length * Mathf.Sin(angle));
+        }
+        
         public static float Random(this Vector2 vector)
         {
             return UnityEngine.Random.Range(vector.x, vector.y); // Inclusive already
