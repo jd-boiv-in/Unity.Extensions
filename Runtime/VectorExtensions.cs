@@ -27,13 +27,13 @@ namespace JD.Extensions
         public static float Random(this Vector2 vector, float random)
         {
             if (Mathf.Approximately(vector.x, vector.y)) return vector.x;
-            return vector.x + (vector.y - vector.x) * random; // Inclusive
+            return vector.x + (vector.y - vector.x) * (random < 0 ? UnityEngine.Random.Range(vector.x, vector.y) : random);
         }
         
         public static int Random(this Vector2Int vector, float random)
         {
             if (vector.x == vector.y) return vector.x;
-            return vector.x + Mathf.RoundToInt((vector.y - vector.x) * random);  // Inclusive
+            return vector.x + Mathf.RoundToInt((vector.y - vector.x) * (random < 0 ? UnityEngine.Random.Range(vector.x, vector.y) : random));
         }
         
         public static float Random(this Vector2 vector, int seed)
