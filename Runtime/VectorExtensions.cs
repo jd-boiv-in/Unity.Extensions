@@ -190,6 +190,26 @@ namespace JD.Extensions
             return new Vector3(value.x, value.y, 0);
         }
         
+        public static Vector2 ToFloat(this Vector2Int value)
+        {
+            return new Vector2(value.x, value.y);
+        }
+        
+        public static Vector3 ToFloat(this Vector3Int value)
+        {
+            return new Vector3(value.x, value.y, value.z);
+        }
+        
+        public static Vector2Int ToInt(this Vector2 value)
+        {
+            return new Vector2Int((int) value.x, (int) value.y);
+        }
+        
+        public static Vector3Int ToInt(this Vector3 value)
+        {
+            return new Vector3Int((int) value.x, (int) value.y, (int) value.z);
+        }
+        
         public static float Angle(this Vector2 to)
         {
             // Atan2
