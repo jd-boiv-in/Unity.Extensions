@@ -113,5 +113,10 @@ namespace JD.Extensions
         {
             return new Rect(rect.xMin + pt.x, rect.yMin + pt.y, rect.width, rect.height);
         }
+        
+        public static int Total(this RectInt rect)
+        {
+            return rect.width * rect.height;
+        }
     }
 }
